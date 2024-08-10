@@ -1,0 +1,51 @@
+.contenedor{
+  font-size: 1.5rem;
+  height: 84vh;
+  width: 100%;
+  display: block;
+  text-align: center;
+  background: linear-gradient(to top, #60a5fa, white)
+}
+input{
+  font-size: 1.8rem;
+  height: 3rem;
+  width: 18rem;
+  text-align: center;
+}
+h1{
+  display: block;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+button{
+  margin: 2.5rem;
+  font-size: 1.8rem;
+  height: 3rem;
+  width: 10rem;
+  border-radius:15px;
+  background-color: #3b82f6;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+button:hover{
+  background-color: white;
+  color:#3b82f6 ;
+  border: 1px solid #3b82f6;
+}
+.selection{
+  margin: 2rem;
+  margin-left: 2rem;
+  text-align: center;
+  font-size: 1.8rem;
+  height: 3.5rem;
+  width: 18rem;
+  border-radius:15px;
+  background-color: #3b82f6;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.flechas{
+  font-size: xx-large;
+}
