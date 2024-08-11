@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Divisas_test/static/css/main.cf5a6eba.css",
+    "main.js": "/Divisas_test/static/js/main.4d27fde3.js",
+    "static/js/453.e6f110c4.chunk.js": "/Divisas_test/static/js/453.e6f110c4.chunk.js",
+    "index.html": "/Divisas_test/index.html",
+    "main.cf5a6eba.css.map": "/Divisas_test/static/css/main.cf5a6eba.css.map",
+    "main.4d27fde3.js.map": "/Divisas_test/static/js/main.4d27fde3.js.map",
+    "453.e6f110c4.chunk.js.map": "/Divisas_test/static/js/453.e6f110c4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf5a6eba.css",
+    "static/js/main.4d27fde3.js"
+  ]
+}
