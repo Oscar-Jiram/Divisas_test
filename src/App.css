@@ -11,7 +11,7 @@
 select{
   font-size: 1.8rem;
   height: 3rem;
-  width: 18rem;
+  width: 19rem;
   text-align: center;
 }
 input{
@@ -44,10 +44,10 @@ button:hover{
 .selection{
   margin: 2rem;
   margin-left: 2rem;
-  text-align: center;
+  text-align: left;
   font-size: 1.8rem;
   height: 3.5rem;
-  width: 18rem;
+  width: 19rem;
   border-radius:15px;
   background-color: #3b82f6;
   color: white;
