@@ -1,17 +1,18 @@
 import './App.css';
-import React, { useState,useEffect } from "react";
-import Select from "react-select"
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
 
 function App() {
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
-  const [currency1, setCurrency1] = useState("USD");
-  const [currency2, setCurrency2] = useState("MXN");
+  const [currency1, setCurrency1] = useState({ value: "USD", label: "United States Dollar",image: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_the_United_States.png' });
+  const [currency2, setCurrency2] = useState({ value: "MXN", label: "Mexican Peso",image: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg' });
   const [rates, setRates] = useState({});
-  
-  const url = "https://api.frankfurter.app/latest?from=USD";
 
   useEffect(() => {
+   
+    const url = `https://api.frankfurter.app/latest?from=${currency1.value}&to=${currency2.value}`;
+    
     const fetchRates = async () => {
       try {
         const response = await fetch(url);
@@ -23,8 +24,8 @@ function App() {
     };
 
     fetchRates();
-  }, [currency1]);
-  
+  }, [currency1, currency2]);
+
   useEffect(() => {
     if (rates[currency2.value]) {
       const rate1to2 = rates[currency2.value];
@@ -39,14 +40,13 @@ function App() {
     }
   }, [value1, value2, currency1, currency2, rates]);
 
-
   const options = [
     { value: 'AUD', label: 'Australian Dollar', image: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Flag_of_Australia.svg' },
     { value: 'BGN', label: 'Bulgarian Lev', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Bulgaria.svg' },
     { value: 'BRL', label: 'Brazilian Real', image: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg' },
     { value: 'CAD', label: 'Canadian Dollar', image: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg' },
     { value: 'CHF', label: 'Swiss Franc', image: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg' },
-    { value: 'CNY', label: 'Chinese Yuan', image: 'https://upload.wikimedia.org/wikipedia/commons/5/5b/Flag_of_the_People%27s_Republic_of_China.svg' },
+    { value: 'CNY', label: 'Chinese Yuan', image: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg" },
     { value: 'CZK', label: 'Czech Koruna', image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg' },
     { value: 'USD', label: 'United States Dollar', image: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of_the_United_States.png' },
     { value: 'DKK', label: 'Danish Krone', image: 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg' },
@@ -72,9 +72,8 @@ function App() {
     { value: 'TRY', label: 'Turkish Lira', image: 'https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg' },
     { value: 'ZAR', label: 'South African Rand', image: 'https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg' },
   ];
-  
 
-   const deleteContent = (e) => {
+  const deleteContent = (e) => {
     e.target.value = "";
   };
 
@@ -105,53 +104,60 @@ function App() {
       setValue(convertedValue);
     }
   };
+
   const imprimir = () => {
-    window.print();
+    console.log("currency1:", currency1);
+    console.log("currency2:", currency2);
+    console.log("rates:", rates);
   };
+
   return (
     <div>
       <h1>Divisa Calculator</h1>
-      <div className='contenedor'>
-        <Select
-          value={currency1}
-          onChange={handleCurrency1Change}
-          options={options}
-          formatOptionLabel={({ label, image }) => (
-            <div style={{ display: 'block', color:"black", alignItems: 'center' }}>
-              <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
-              <span>{label}</span>
-            </div>
-          )}
-          className='selection'
-        />
-        <input
-          onClick={deleteContent}
-          name="value1"
-          type="number"
-          value={value1 !== "" ? value1 : ""}
-          onChange={handleValue1Change}
-        /><br/>
-        <div className='flechas'>↑ ↓</div>
-        <Select
-          value={currency2}
-          onChange={handleCurrency2Change}
-          options={options}
-          formatOptionLabel={({ label, image }) => (
-            <div style={{ display: 'block', color:"black", alignItems: 'center' }}>
-              <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
-              <span>{label}</span>
-            </div>
-          )}
-          className='selection'
-        />
-        <input
-          onClick={deleteContent}
-          name="value2"
-          type="number"
-          value={value2 !== "" ? value2 : ""}
-          onChange={handleValue2Change}
-        /> 
-        <button onClick={imprimir}>Print</button>
+      <div className="contenedor">
+        <div className="menu-contenedor">
+          <Select
+            value={currency1}
+            onChange={handleCurrency1Change}
+            options={options}
+            formatOptionLabel={({ label, image }) => (
+              <div style={{ display: "block", color: "black", alignItems: "center" }}>
+                <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
+                <span>{label}</span>
+              </div>
+            )}
+            className="selection"
+          />
+          <input
+            onClick={deleteContent}
+            name="value1"
+            type="number"
+            value={value1 !== "" ? value1 : ""}
+            onChange={handleValue1Change}
+          />
+          <br />
+          <div className="flechas">↑ ↓</div>
+          <Select
+            value={currency2}
+            onChange={handleCurrency2Change}
+            options={options}
+            formatOptionLabel={({ label, image }) => (
+              <div style={{ display: "block", color: "black", alignItems: "center" }}>
+                <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
+                <span>{label}</span>
+              </div>
+            )}
+            className="selection"
+          />
+          <input
+            onClick={deleteContent}
+            name="value2"
+            type="number"
+            value={value2 !== "" ? value2 : ""}
+            onChange={handleValue2Change}
+          />
+          <button onClick={imprimir}>Print</button>
+        </div>
       </div>
     </div>
   );

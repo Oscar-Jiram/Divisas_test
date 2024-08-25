@@ -57,3 +57,14 @@ button:hover{
 .flechas{
   font-size: xx-large;
 }
+.menu-contenedor{
+  background-color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  height:auto;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
