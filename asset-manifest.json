@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Divisas_test/static/css/main.1bbdac35.css",
-    "main.js": "/Divisas_test/static/js/main.ccea0c9c.js",
+    "main.css": "/Divisas_test/static/css/main.2285d840.css",
+    "main.js": "/Divisas_test/static/js/main.0a175f1a.js",
     "static/js/453.e6f110c4.chunk.js": "/Divisas_test/static/js/453.e6f110c4.chunk.js",
     "index.html": "/Divisas_test/index.html",
-    "main.1bbdac35.css.map": "/Divisas_test/static/css/main.1bbdac35.css.map",
-    "main.ccea0c9c.js.map": "/Divisas_test/static/js/main.ccea0c9c.js.map",
+    "main.2285d840.css.map": "/Divisas_test/static/css/main.2285d840.css.map",
+    "main.0a175f1a.js.map": "/Divisas_test/static/js/main.0a175f1a.js.map",
     "453.e6f110c4.chunk.js.map": "/Divisas_test/static/js/453.e6f110c4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1bbdac35.css",
-    "static/js/main.ccea0c9c.js"
+    "static/css/main.2285d840.css",
+    "static/js/main.0a175f1a.js"
   ]
 }
