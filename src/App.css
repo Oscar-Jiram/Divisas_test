@@ -1,6 +1,6 @@
 .contenedor {
   font-size: 1.5rem;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,8 @@ select{
 input{
   font-size: 1.8rem;
   height: 3rem;
-  width: 18rem;
+  width: 18.4rem;
+  border-radius: 5px;
   text-align: center;
   border: 1px solid black;
   
@@ -29,20 +30,20 @@ h1{
   margin-bottom: 3rem;
 }
 button{
-  margin: 2.5rem;
+  margin: 2rem;
   font-size: 1.8rem;
   height: 3rem;
   width: 10rem;
-  border-radius:15px;
+  border-radius:10px;
   background-color: #3b82f6;
   color: white;
   border: 1px solid white;
   cursor: pointer;
 }
-button:hover{
-  background-color: white;
-  color:#3b82f6 ;
-  border: 1px solid #3b82f6;
+button:active{
+  background-color: #1d4ed8;
+  color:white ;
+  border: 1px solid #1d4ed8;
 }
 .selection{
   margin: 2rem;
@@ -52,10 +53,36 @@ button:hover{
   height: 3.5rem;
   width: 19rem;
   border-radius:15px;
-  background-color: #3b82f6;
   color: white;
   border: 1px solid white;
   cursor: pointer;
+  position: relative;  
+  z-index: 10; 
+  
+}
+.selection2{
+  margin: 1rem;
+  margin-left: 1rem;
+  text-align: left;
+  font-size: 1.8rem;
+  height: 3.5rem;
+  width: 11rem;
+  border-radius:15px;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  position: relative; 
+  z-index: 10; 
+  
+}
+.canvaContainer{
+  
+    display: flex;             /* Flexbox para el centrado */
+    justify-content: center;   /* Centra el canvas horizontalmente */
+    width: 100%;               /* Ocupa todo el ancho disponible */
+    position: relative;  /* Asegura que el canvas esté en un contexto de posición */
+    z-index: 1;  
+  
 }
 .flechas{
   font-size: xx-large;
@@ -65,16 +92,57 @@ button:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50vw;
+  width: 85vw;
   max-width: 750px;
   min-width: 300px;
-  height: 60vh;
+  min-height: 750px;
+  height: auto;
   padding: 1rem;
   border: 1px solid gray;
   border-top: 0px;
   border-bottom-left-radius: 10px;  
   border-bottom-right-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.range-container {
+  display: flex;
+  justify-content: space-evenly;
+   
+  margin-top: 20px;
+}
+.range {
+  display: flexbox; 
+  align-items: center; 
+  width: 3rem; 
+  height: 2rem; 
+  padding: 0px;
+  margin-top: 0px;
+  margin:1rem;
+  background-color: white;
+  color: black;
+  border: none; 
+  user-select: none;
+  cursor: pointer; 
+}
+.range:focus{
+  background-color: #e6ecf0;
+  color: black;
+}
+.bellowRange {
+  display: flex;
+  flex-direction: column;    /* Organiza los elementos verticalmente */
+  justify-content: center;   /* Centra verticalmente */
+  align-items: center;       /* Centra horizontalmente */
+  width: 100%;               /* Ocupa todo el ancho disponible */
+  gap: 20px;                 /* Espacio entre los elementos */
+}
+
+.select-container {
+  display: flex;
+  flex-direction: row;      
+  align-items: center;     /* Coloca los selects uno encima del otro */
+  justify-content: center;          /* Centrado vertical */
+  gap: 10px;                        /* Espacio entre los selects */
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
