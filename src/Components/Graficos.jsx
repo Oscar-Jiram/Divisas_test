@@ -254,10 +254,10 @@ function Graficos() {
   style={{
     width: "80%",             /* Proporción de ancho para mantenerlo responsivo */
     maxWidth: "750px",        /* Máximo ancho */
-    minWidth: "200px",        /* Mínimo ancho */
+    minWidth: "185px",        /* Mínimo ancho */
     minHeight: "150px",       /* Mínimo alto */
     height: "30vh",           /* Altura basada en viewport para mantenerlo responsivo */
-    margin: "0 auto",         /* Centra horizontalmente */
+             /* Centra horizontalmente */
     display: "block",         /* Display block para asegurar que los márgenes funcionen */
   }}
 ></div>

@@ -139,6 +139,7 @@ button:active{
 
 .select-container {
   display: flex;
+  width: 100%;
   flex-direction: row;      
   align-items: center;     /* Coloca los selects uno encima del otro */
   justify-content: center;          /* Centrado vertical */
@@ -168,4 +169,25 @@ input[type="number"]::-webkit-outer-spin-button {
     .active{
       background-color: white;
       border-bottom: 0px;
+    }
+  
+    @media (max-width: 768px) {
+      .bellowRange {
+        flex-direction: column; /* Cambia la disposición a columna en pantallas pequeñas */
+      }
+    
+      .selection {
+        min-width: 301px;
+        width: 47%; /* Asegura que los selects ocupen el 100% del ancho disponible */
+      }
+      .selection2{
+        width: 100%;
+      }
+    
+      .canvaContainer {
+        width: 100%; /* Asegura que el canvas ocupe el ancho disponible */
+        padding: 1rem; /* Añadir un pequeño padding para mejor visualización */
+        
+      }
+      
     }
