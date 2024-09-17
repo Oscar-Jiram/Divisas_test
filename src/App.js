@@ -23,6 +23,7 @@ function App() {
         <Route path="/graficos" element ={<Graficos/>} />
         <Route path="/alertas" element ={<Alertas/>} />
         <Route path="/conversion" element ={<Navigate to="/"/>} />
+        <Route path="/Divisas_test" element ={<Navigate to="/"/>} />
         <Route path="*" element ={<Error/>} />
         </Routes>
       </BrowserRouter>

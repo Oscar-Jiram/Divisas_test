@@ -95,6 +95,10 @@ function Conversion() {
   const handleValue2Change = (e) => {
     const value = e.target.value;
     setValue2(value);
+    if (setValue1 === currency2.value) {
+
+      
+    }
     handleConversion(value, setValue1, currency2.value, currency1.value);
   };
 
@@ -106,6 +110,14 @@ function Conversion() {
     }
   };
 
+  const filteredOptionsForCurrency1 = options.filter(
+    (option) => option.value !== (currency2 ? currency2.value : null)
+  );
+
+  const filteredOptionsForCurrency2 = options.filter(
+    (option) => option.value !== (currency1 ? currency1.value : null)
+  );
+
   return (
     <div>
       
@@ -114,7 +126,7 @@ function Conversion() {
             isSearchable={false} 
             value={currency1}
             onChange={handleCurrency1Change}
-            options={options}
+            options={filteredOptionsForCurrency1}
             formatOptionLabel={({ label, image }) => (
               <div style={{ display: "block", color: "black", alignItems: "center" }}>
                 <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
@@ -136,7 +148,7 @@ function Conversion() {
             isSearchable={false} 
             value={currency2}
             onChange={handleCurrency2Change}
-            options={options}
+            options={filteredOptionsForCurrency2}
             formatOptionLabel={({ label, image }) => (
               <div style={{ display: "block", color: "black", alignItems: "center" }}>
                 <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />

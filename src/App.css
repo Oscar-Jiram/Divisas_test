@@ -104,6 +104,11 @@ button:active{
   border-bottom-right-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+.alarma-contenedor{
+  
+  width: 100%;
+  height: 80vh;
+}
 .range-container {
   display: flex;
   justify-content: space-evenly;

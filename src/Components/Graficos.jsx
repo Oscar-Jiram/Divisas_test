@@ -24,7 +24,6 @@ function Graficos() {
   const chartRef = useRef(null);
   const areaSeriesRef = useRef(null);
 
-  // Función para calcular las fechas según el rango de tiempo seleccionado
   const calculateDateRange = (range) => {
     const endDate = new Date();
     let startDate = new Date();
@@ -77,7 +76,7 @@ function Graficos() {
     };
   }, []);
 
-  // useEffect para actualizar los datos al cambiar el rango de tiempo
+  
   useEffect(() => {
     const { startDate, endDate } = calculateDateRange(timeRange);
     const fetchData = async () => {
@@ -208,6 +207,14 @@ function Graficos() {
       setValue(convertedValue);
     }
   };
+  const filteredOptionsForCurrency1 = options.filter(
+  (option) => option.value !== (currency2 ? currency2.value : null)
+);
+
+const filteredOptionsForCurrency2 = options.filter(
+  (option) => option.value !== (currency1 ? currency1.value : null)
+);
+
 
   return (
     <div>
@@ -221,9 +228,10 @@ function Graficos() {
       <div className="bellowRange">
   <div className="select-container">
     <Select
+      isSearchable={false}
       value={currency1}
       onChange={handleCurrency1Change}
-      options={options}
+      options={filteredOptionsForCurrency1}
       formatOptionLabel={({ label, image }) => (
         <div style={{ display: "block", color: "black", alignItems: "center" }}>
           <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
@@ -236,9 +244,10 @@ function Graficos() {
     →
     </div>
     <Select
+      isSearchable={false}
       value={currency2}
       onChange={handleCurrency2Change}
-      options={options}
+      options={filteredOptionsForCurrency2}
       formatOptionLabel={({ label, image }) => (
         <div style={{ display: "block", color: "black", alignItems: "center" }}>
           <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
@@ -252,13 +261,12 @@ function Graficos() {
   <div
   ref={chartContainerRef}
   style={{
-    width: "80%",             /* Proporción de ancho para mantenerlo responsivo */
-    maxWidth: "750px",        /* Máximo ancho */
-    minWidth: "185px",        /* Mínimo ancho */
-    minHeight: "150px",       /* Mínimo alto */
-    height: "30vh",           /* Altura basada en viewport para mantenerlo responsivo */
-             /* Centra horizontalmente */
-    display: "block",         /* Display block para asegurar que los márgenes funcionen */
+    width: "80%",             
+    maxWidth: "750px",        
+    minWidth: "185px",        
+    minHeight: "150px",       
+    height: "30vh",           
+    display: "block",         
   }}
 ></div>
 </div>
