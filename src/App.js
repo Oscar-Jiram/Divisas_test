@@ -1,3 +1,4 @@
+
 import './App.css';
 import {BrowserRouter,Route ,Routes,Navigate } from "react-router-dom";
 import ReactDOM from "react-dom"
@@ -12,8 +13,8 @@ import Navegation from "./Components/Navigation.jsx"
 function App() {
   
   return (
-    <div>
-      <h1>Divisa Calculator</h1>
+    <div><br/>
+    
       <div className="contenedor">
         <div className="menu">
         <BrowserRouter>
