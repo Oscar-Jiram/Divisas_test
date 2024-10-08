@@ -9,6 +9,7 @@ import Graficos from "./Components/Graficos.jsx"
 import Alertas from "./Components/Alertas.jsx"
 import Error from  "./Components/Error.jsx"
 import Navegation from "./Components/Navigation.jsx"
+import Notifications from './Components/Notificaciones.jsx';
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
     
       <div className="contenedor">
         <div className="menu">
+      <Notifications/>
         <BrowserRouter>
       <Navegation/>
         <Routes>

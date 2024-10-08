@@ -2,6 +2,7 @@
 import ReactDOM from "react-dom"
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
+import Notifications from "./Notificaciones";
 
 
 function Alertas() {
@@ -130,8 +131,12 @@ useEffect(() => {
   };
 
   const createAlarm = async (currency1, currency2,value1,value2) => {
+    if (value2 == "") { value2 = 0;
+    }
+    if (value1 == "") { value1 = 0;
+    }
     const data = {
-      id: "66e3059d3f10235fca69ba89",
+      id: "",
       divisaBase: currency1.label,
       divisaContraparte: currency2.label,
       minimo: value2, 

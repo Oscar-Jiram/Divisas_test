@@ -7,7 +7,7 @@ import { createChart } from "lightweight-charts";
 function Graficos() {
   const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
-  const [timeRange, setTimeRange] = useState("1W");
+  const [timeRange, setTimeRange] = useState("1M");
   const [currency1, setCurrency1] = useState({
     value: "USD",
     label: "USD",
@@ -23,14 +23,18 @@ function Graficos() {
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
   const areaSeriesRef = useRef(null);
+  const [selectIndex,setSelectIndex]=useState(null);
+  const [selectedRange, setSelectedRange] = useState(null);
+
+  // Función que maneja el clic en los botones y establece el rango seleccionado
+  const handleRangeClick = (range) => {
+    setSelectedRange(range); // Establece el rango de tiempo seleccionado
+  };
 
   const calculateDateRange = (range) => {
     const endDate = new Date();
     let startDate = new Date();
     switch (range) {
-      case "1W":
-        startDate.setDate(endDate.getDate() - 7);
-        break;
       case "1M":
         startDate.setMonth(endDate.getMonth() - 1);
         break;
@@ -207,6 +211,7 @@ function Graficos() {
       setValue(convertedValue);
     }
   };
+
   const filteredOptionsForCurrency1 = options.filter(
   (option) => option.value !== (currency2 ? currency2.value : null)
 );
@@ -220,11 +225,40 @@ const filteredOptionsForCurrency2 = options.filter(
     <div>
       <div className="menu-contenedor">
       <div className="range-container" style={{ marginTop: "20px" }}>
-        <button className="range" onClick={() => setTimeRange("1W")}>1W</button>
-        <button className="range" onClick={() => setTimeRange("1M")}>1M</button>
-        <button className="range" onClick={() => setTimeRange("1Y")}>1Y</button>
-        <button className="range" onClick={() => setTimeRange("5Y")}>5Y</button>
-      </div><br/>
+      <button
+          className="range"
+          onClick={() => handleRangeClick("1M")}
+          style={{
+            backgroundColor: selectedRange === "1M" ? '#e6ecf0' : 'white', // Aplica estilo condicional
+            color: selectedRange === "1M" ? 'black' : 'black',
+            transition: 'background-color 0.3s ease',
+          }}
+        >
+          1M
+        </button>
+        <button
+          className="range"
+          onClick={() => handleRangeClick("1Y")}
+          style={{
+            backgroundColor: selectedRange === "1Y" ? '#e6ecf0' : 'white', // Aplica estilo condicional
+            color: selectedRange === "1Y" ? 'black' : 'black',
+            transition: 'background-color 0.3s ease',
+          }}
+        >
+          1Y
+        </button>
+        <button
+          className="range"
+          onClick={() => handleRangeClick("5Y")}
+          style={{
+            backgroundColor: selectedRange === "5Y" ? '#e6ecf0' : 'white', // Aplica estilo condicional
+            color: selectedRange === "5Y" ? 'black' : 'black',
+            transition: 'background-color 0.3s ease',
+          }}
+        >
+          5Y
+        </button>
+        </div><br/>
       <div className="bellowRange">
   <div className="select-container">
     <Select
