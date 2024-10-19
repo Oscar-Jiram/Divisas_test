@@ -1,4 +1,3 @@
-
 import './App.css';
 import {BrowserRouter,Route ,Routes,Navigate } from "react-router-dom";
 import ReactDOM from "react-dom"
@@ -9,16 +8,19 @@ import Graficos from "./Components/Graficos.jsx"
 import Alertas from "./Components/Alertas.jsx"
 import Error from  "./Components/Error.jsx"
 import Navegation from "./Components/Navigation.jsx"
-import Notifications from './Components/Notificaciones.jsx';
+import Notification from './Components/Notificaciones.jsx';
+import { IoIosSwitch } from "react-icons/io";
+import Switch from "./Components/DarkMode.jsx";
+
 
 function App() {
   
   return (
     <div><br/>
-    
       <div className="contenedor">
+      <Switch/>
         <div className="menu">
-      <Notifications/>
+        <Notification/>
         <BrowserRouter>
       <Navegation/>
         <Routes>
