@@ -4,20 +4,31 @@ const Notifications = () => {
   const [messages, setMessages] = useState([]);
   const uri = 'https://proyectodivisasapi-production.up.railway.app';
   useEffect(() => {
-    const eventSource = new EventSource(uri + '/Alerta/notificacion/subscribe');
+    let eventSource;
 
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      setMessages((prevMessages) => [...prevMessages, data]);
+    const connect = () => {
+      eventSource = new EventSource(uri + '/Alerta/notificacion/subscribe');
+
+      eventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        setMessages((prevMessages) => [...prevMessages, data]);
+      };
+
+      eventSource.onerror = (error) => {
+        console.error('EventSource failed:', error);
+        eventSource.close();
+        setTimeout(() => {
+          connect();
+        }, 5000); 
+      };
     };
 
-    eventSource.onerror = (error) => {
-      console.error('EventSource failed:', error);
-      eventSource.close();
-    };
+    connect();
 
     return () => {
-      eventSource.close();
+      if (eventSource) {
+        eventSource.close();
+      }
     };
   }, []);
 

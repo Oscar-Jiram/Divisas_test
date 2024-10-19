@@ -1,3 +1,16 @@
+
+/* Modo claro */
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+/* Modo oscuro */
+.dark-mode {
+  background-color: #212E36;
+  color: white;
+}
+
 .contenedor {
   font-size: 1.5rem;
   height: 100vh;
@@ -5,10 +18,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   text-align: center;
-  
 }
+
 select{
   font-size: 1.8rem;
   height: 3rem;
@@ -56,7 +68,6 @@ button:active{
   width: 19rem;
   border-radius:15px;
   color: white;
-  border: 1px solid white;
   cursor: pointer;
   position: relative;  
   z-index: 10; 
@@ -71,7 +82,6 @@ button:active{
   width: 11rem;
   border-radius:15px;
   color: white;
-  border: 1px solid white;
   cursor: pointer;
   position: relative; 
   z-index: 10; 
@@ -86,7 +96,6 @@ button:active{
   width: 19rem;
   border-radius:15px;
   color: white;
-  border: 1px solid white;
   cursor: pointer;
   position: relative; 
   z-index: 10;  
@@ -104,7 +113,7 @@ button:active{
   font-size: xx-large;
 }
 .menu-contenedor{
-  background-color: white;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,7 +136,6 @@ button:active{
   flex-direction: column;        /* Coloca el contenido en columna (opcional si necesitas un orden vertical) */
   width: 90%;
   height: auto;
-  background-color: white;
   text-align: center;
 }
 
@@ -182,23 +190,40 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0; }
     .nav{
       display: flex;
-      background-color: white;
       font-size: medium;
+      text-decoration: none;
     }
 
     a{
       width: 100%;
       text-decoration: none;
-      color: black;
       padding: 5px 20px;
-      border: 1px solid black;
+      border: 1px solid gray;
       border-top-right-radius: 10px;
       border-top-left-radius: 10px;
     }
+    a {
+      color: inherit; /* Hereda el color según el contexto (modo claro/oscuro) */
+      text-decoration: none; /* Elimina el subrayado si no lo deseas */
+    }
+    
+    /* Elimina el color morado para los enlaces visitados */
+    a:visited {
+      color: inherit; /* Usa el color actual definido por el modo */
+    }
+    
+    /* Estilo de los enlaces en modo claro */
+    .light-mode a {
+      color: black;
+    }
+    
+    /* Estilo de los enlaces en modo oscuro */
+    .dark-mode a {
+      color: white;
+    }
     .active{
-      
-      background-color: white;
       border-bottom: 0px;
+      text-decoration: none;
     }
   
     @media (max-width: 768px) {
@@ -232,3 +257,4 @@ input[type="number"]::-webkit-outer-spin-button {
       }
     
     }
+    
