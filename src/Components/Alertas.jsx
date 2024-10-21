@@ -254,6 +254,7 @@ useEffect(() => {
           className="buttonAlarm">
           Crear alarma
         </button>
+        
       </div>
     </div>
   );
