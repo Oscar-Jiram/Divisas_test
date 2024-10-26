@@ -21,7 +21,6 @@ function App() {
     <div><br/>
       <div className="contenedor">
       <Switch/>
-      <BasicModal/>
         <div className="menu">
         <BrowserRouter>
       <Navegation/>
@@ -34,7 +33,6 @@ function App() {
         <Route path="*" element ={<Error/>} />
         </Routes>
       </BrowserRouter>
-      <EventTable/>
       <Notification/>
         </div>
       </div>
