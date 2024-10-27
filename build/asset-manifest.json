@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Divisas_test/static/css/main.65068149.css",
-    "main.js": "/Divisas_test/static/js/main.962ff9d4.js",
+    "main.js": "/Divisas_test/static/js/main.d93037d8.js",
     "static/js/453.e6f110c4.chunk.js": "/Divisas_test/static/js/453.e6f110c4.chunk.js",
     "index.html": "/Divisas_test/index.html",
     "main.65068149.css.map": "/Divisas_test/static/css/main.65068149.css.map",
-    "main.962ff9d4.js.map": "/Divisas_test/static/js/main.962ff9d4.js.map",
+    "main.d93037d8.js.map": "/Divisas_test/static/js/main.d93037d8.js.map",
     "453.e6f110c4.chunk.js.map": "/Divisas_test/static/js/453.e6f110c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65068149.css",
-    "static/js/main.962ff9d4.js"
+    "static/js/main.d93037d8.js"
   ]
 }
