@@ -15,6 +15,7 @@ import BasicModal from './Components/Modal.jsx';
 import EventTable from './Components/EventTable.jsx';
 
 
+
 function App() {
   
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="*" element ={<Error/>} />
         </Routes>
       </BrowserRouter>
+      
       <Notification/>
         </div>
       </div>

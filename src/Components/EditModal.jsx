@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
-function EditModal() {
+function EditModal({id}) {
+  
   const [open, setOpen] = useState(false);
   const [valorActual, setValorActual] = useState(0);
   const [value1, setValue1] = useState(0);
@@ -130,34 +131,36 @@ const options = [
   };
 
  
-  const createAlarm = async (currency1, currency2,value1,value2) => {
-    if (value2 == "") { value2 = 0;
-    }
-    if (value1 == "") { value1 = 0;
-    }
+  const editAlarm = async (currency1, currency2, value1, value2) => {
+    if (value2 === "") { value2 = 0; }
+    if (value1 === "") { value1 = 0; }
+  
     const data = {
-      id: "",
+      id: id, // Usa el id recibido en los props
       divisaBase: currency1.label,
       divisaContraparte: currency2.label,
-      minimo: value2, 
+      minimo: value2,
       maximo: value1,
       valorActual: parseFloat(rates[currency2.value]),
       limiteMinimoAlcanzado: limiteMinimoAlcanzado,
-      limiteMaximoAlcanzado: limiteMaximoAlcanzado
+      limiteMaximoAlcanzado: limiteMaximoAlcanzado,
     };
-
+  
     if (parseFloat(value1) < parseFloat(value2)) {
       console.log("El valor máximo tiene que ser mayor al mínimo.");
     } else {
       try {
-        const response = await fetch('https://proyectodivisasapi-production.up.railway.app/api/AlertasDivisas/Create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-
+        const response = await fetch(
+          `https://proyectodivisasapi-production.up.railway.app/api/AlertasDivisas/Update/${id}`, // Usa el id aquí
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          }
+        );
+  
         if (response.ok) {
           const result = await response.json();
           console.log('Datos enviados correctamente:', result);
@@ -168,8 +171,8 @@ const options = [
         console.error('Error en la solicitud:', error);
       }
     }
-  }
-};
+  };
+  
 
   const handleMaxValue = (e) => {
     const valorMax = parseFloat(e.target.value)
@@ -197,7 +200,7 @@ const options = [
 
   return (
     <div>
-      <Button onClick={handleOpen}>Crear alarma</Button>
+      <Button onClick={handleOpen}>Editar alarma</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -206,7 +209,7 @@ const options = [
       >
         <Box sx={style}>
           <Typography id="modal-title" variant="h6" component="h2">
-            Crear alarma
+            Editar alarma
           </Typography>
           <div className='alarm-container'>
           <Select
@@ -254,16 +257,16 @@ const options = [
           className="alarmInput"
         />
         <button
-          onClick={() => createAlarm(currency1, currency2, value1, value2)} 
+          onClick={() => editAlarm(currency1, currency2, value1, value2)}
           className="buttonAlarm">
           Editar Alarma
-        </button>
+          </button>
           </div>
         </Box>
       </Modal>
     </div>
   );
 
-
+}
 export default EditModal;
 

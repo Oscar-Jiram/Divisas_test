@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import EditModal from './EditModal.jsx';
+import EliminateModal from "./EliminateModal.jsx";
+
 
 function EventTable() {
   const [rates, setRates] = useState([]); // Inicializa el estado como un arreglo vacío
@@ -46,50 +49,6 @@ function EventTable() {
     }
   };
 
-  const editAlarm = async (iD, currency1, currency2, value1, value2) => {
-    if (value2 === "") {
-      value2 = 0;
-    }
-    if (value1 === "") {
-      value1 = 0;
-    }
-    const data = {
-      id: iD,
-      divisaBase: currency1.label,
-      divisaContraparte: currency2.label,
-      minimo: value2,
-      maximo: value1,
-      limiteMinimoAlcanzado: limiteMinimoAlcanzado,
-      limiteMaximoAlcanzado: limiteMaximoAlcanzado,
-    };
-
-    if (parseFloat(value1) < parseFloat(value2)) {
-      console.log("El valor máximo tiene que ser mayor al mínimo.");
-    } else {
-      try {
-        const response = await fetch(
-          `https://proyectodivisasapi-production.up.railway.app/api/AlertasDivisas/Update/${iD}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
-
-        if (response.ok) {
-          const result = await response.json();
-          console.log("Datos enviados correctamente:", result);
-        } else {
-          console.error("Error en la solicitud:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error en la solicitud:", error);
-      }
-    }
-  };
-
   return (
     <div className="table-container">
       <table>
@@ -107,7 +66,7 @@ function EventTable() {
           {rates &&
             rates.map((rate, index) => (
               <tr key={index}>
-                <td>{index}</td>
+                <td>{index + 1}</td>
                 <td>{rate.divisaBase}</td>
                 <td>{rate.divisaContraparte}</td>
                 <td>{rate.minimo}</td>
@@ -117,23 +76,8 @@ function EventTable() {
                     ? "SI"
                     : "NO"}
                 </td>
-                <td>
-                  <button
-                    onClick={() =>
-                      editAlarm(rate.id, rate.divisaBase, rate.divisaContraparte, rate.minimo, rate.maximo) }
-                    className="edit"
-                  >
-                    Editar
-                  </button>
-                </td>
-                <td>
-                  <button
-                    onClick={() => eliminateAlarm(rate.id)}
-                    className="elim"
-                  >
-                    Eliminar
-                  </button>
-                </td>
+                <td><EditModal id={rate.id}/></td>
+                <td><EliminateModal id={rate.id}/></td>
               </tr>
             ))}
         </tbody>
