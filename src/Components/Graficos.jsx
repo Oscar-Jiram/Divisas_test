@@ -24,31 +24,35 @@ function Graficos() {
   const chartRef = useRef(null);
   const areaSeriesRef = useRef(null);
   const [selectIndex,setSelectIndex]=useState(null);
-  const [selectedRange, setSelectedRange] = useState(null);
+  const [selectedRange, setSelectedRange] = useState("1M");
 
   // Función que maneja el clic en los botones y establece el rango seleccionado
-  const handleRangeClick = (range) => {
-    setSelectedRange(range); // Establece el rango de tiempo seleccionado
-  };
+  
+const handleRangeClick = (range) => {
+  setSelectedRange(range); // Establece el rango seleccionado
+  setTimeRange(range); // Actualiza el rango de tiempo para que el useEffect lo detecte
+};
 
-  const calculateDateRange = (range) => {
-    const endDate = new Date();
-    let startDate = new Date();
-    switch (range) {
-      case "1M":
-        startDate.setMonth(endDate.getMonth() - 1);
-        break;
-      case "1Y":
-        startDate.setFullYear(endDate.getFullYear() - 1);
-        break;
-      case "5Y":
-        startDate.setFullYear(endDate.getFullYear() - 5);
-        break;
-      default:
-        startDate = endDate;
-    }
-    return { startDate, endDate };
-  };
+const calculateDateRange = (range) => {
+  const endDate = new Date();
+  let startDate = new Date();
+  switch (range) {
+    case "1M":
+      startDate.setMonth(endDate.getMonth() - 1);
+      break;
+    case "1Y":
+      startDate.setFullYear(endDate.getFullYear() - 1);
+      break;
+    case "5Y":
+      startDate.setFullYear(endDate.getFullYear() - 5);
+      break;
+    default:
+      startDate = endDate;
+  }
+  return { startDate, endDate };
+};
+
+
 
   // useEffect para inicializar el gráfico
   useEffect(() => {
@@ -82,50 +86,41 @@ function Graficos() {
 
   
   useEffect(() => {
-    const { startDate, endDate } = calculateDateRange(timeRange);
+    const { startDate, endDate } = calculateDateRange(selectedRange); // Usa selectedRange en lugar de timeRange
+  
     const fetchData = async () => {
       try {
-        // Formatear fechas como YYYY-MM-DD
-        const formatDate = (date) => date.toISOString().split('T')[0];
-
-        // Crear un array de fechas distribuidas uniformemente entre startDate y endDate
+        const formatDate = (date) => date.toISOString().split("T")[0];
         const dates = Array.from({ length: 10 }, (_, i) => {
-          const current = new Date(startDate.getTime() + ((endDate.getTime() - startDate.getTime()) / 9) * i);
+          const current = new Date(
+            startDate.getTime() + ((endDate.getTime() - startDate.getTime()) / 9) * i
+          );
           return formatDate(current);
         });
-
-        // Hacer una petición para cada fecha
-        const promises = dates.map(date =>
+  
+        const promises = dates.map((date) =>
           fetch(`https://api.frankfurter.app/${date}?from=${currency1.value}&to=${currency2.value}`)
-            .then(res => res.json())
+            .then((res) => res.json())
         );
-
-        // Esperar a todas las peticiones y extraer los valores de currency2
+  
         const results = await Promise.all(promises);
         const newData = results.map((result, i) => ({
-          time: new Date(dates[i]).getTime() / 1000, // convertir a timestamp Unix
+          time: new Date(dates[i]).getTime() / 1000,
           value: result.rates[currency2.value],
         }));
-
-        // Ordena los datos por tiempo
+  
         newData.sort((a, b) => a.time - b.time);
-
-        // Actualizar data y el gráfico
         setData(newData);
         if (areaSeriesRef.current) {
           areaSeriesRef.current.setData(newData);
         }
-
-        console.log("Fechas:", dates);
-        console.log("Valores:", newData.map(d => d.value));
-
       } catch (error) {
-        console.error('Error al obtener los datos:', error);
+        console.error("Error al obtener los datos:", error);
       }
     };
-
+  
     fetchData();
-  }, [timeRange, currency1, currency2]);
+  }, [selectedRange, currency1, currency2]);
 
   useEffect(() => {
     const url = `https://api.frankfurter.app/latest?from=${currency1.value}&to=${currency2.value}`;
