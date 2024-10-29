@@ -1,0 +1,32 @@
+/* TrashIcon.css */
+.trash-icon {
+    display: inline-block; /* Ajusta el tamaño del contenedor al del contenido */
+    padding: 0; /* Elimina cualquier relleno adicional */
+    margin: 0; /* Elimina cualquier margen adicional */
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: auto; /* Ajusta el alto automáticamente */
+    cursor: pointer;
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+svg {
+    display: block; /* Elimina cualquier espacio extra alrededor del SVG */
+    width: 35px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 35px; /* Ajusta el tamaño del ícono según sea necesario */
+}
+  /* Animación de la tapa del basurero */
+  .lid {
+    transform-origin: 57px 12px; /* Establece el origen de la transformación en el extremo derecho de la tapa */
+    transition: transform 0.3s ease; /* Define la duración y la transición de la animación */
+  }
+  
+  /* Clase para abrir la tapa */
+  .open {
+    transform: rotate(25deg); /* Rota la tapa para abrirla */
+  }
+  
+  /* Clase para cerrar la tapa */
+  .closed {
+    transform: rotate(0deg); /* La tapa está cerrada */
+  }
+  

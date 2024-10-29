@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import TrashIcon from './TrashCan';
 
 const EliminateModal = ({id}) => {
     
@@ -56,7 +57,9 @@ const EliminateModal = ({id}) => {
 
     return (
     <div>
-    <Button onClick={handleOpen}>Eliminar alarma</Button>
+    <Button onClick={handleOpen}>
+      <TrashIcon/>
+    </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -65,10 +68,10 @@ const EliminateModal = ({id}) => {
       >
         <Box sx={style}>
           <Typography id="modal-title" variant="h6" component="h2">
-            Editar alarma
+            Eliminar alarma
           </Typography>
           <div className='alarm-container'>
-         <h2>¿Estas seguro de qeu deseas eliminar esta alarma?</h2>
+         <h2>¿Estas seguro de que deseas eliminar esta alarma?</h2>
         <button
           onClick={() => eliminateAlarm(id)}
           className="buttonAlarm">

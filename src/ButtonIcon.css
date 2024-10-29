@@ -1,0 +1,19 @@
+.botonModal {
+    display: inline-block; /* Ajustar al tamaño del contenido */
+    padding: 0; /* Eliminar padding extra */
+    margin: 0; /* Eliminar margin extra */
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+  }
+  
+  .icon-svg {
+    display: block; /* Evitar espacio extra */
+    width: 20px; /* Ajustar tamaño */
+    height: 20px; /* Ajustar tamaño */
+    transition: transform 0.3s ease; /* Animación suave */
+  }
+  
+  .icon-svg.open {
+    transform: translateY(-10px) rotate(15deg); /* Mueve y rota cuando está abierto */
+  }
+  

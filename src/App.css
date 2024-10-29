@@ -129,14 +129,16 @@ button:active{
   border-bottom-right-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.alarm-container{
-  display: flex;                /* Activa flexbox */
-  justify-content: first baseline;       /* Centra horizontalmente */
-  align-items: center;           /* Centra verticalmente */
-  flex-direction: column;        /* Coloca el contenido en columna (opcional si necesitas un orden vertical) */
+.alarm-container {
+  display: flex;
+  flex-direction: column; /* Mantén la disposición en columna */
+  align-items: center; /* Alineación centrada */
   width: 90%;
-  height: auto;
-  text-align: center;
+  margin: 0 auto; /* Centrar horizontalmente */
+  padding: 16px;
+  
+  border-radius: 8px;
+  
 }
 
 .alarmFlechas{
@@ -257,28 +259,39 @@ input[type="number"]::-webkit-outer-spin-button {
       }
     
     }
-.table-container{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 1rem;
-}
-table{
-  border-collapse: collapse;
-  width: 100%;
-}
-th,td{
-  border: 1px solid #ffffff;
-  text-align: left;
-  padding: 8px;
-  font-size: 20px;
-}
-th{
-  background-color: rgb(97, 197, 255);
-}
-td{
-  background-color: rgb(194, 232, 254);
-}
+    .table-container {
+      width: 100%;
+      overflow-x: auto; /* Desplazamiento horizontal en pantallas pequeñas */
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      border: 1px solid #ddd; /* Cambia el color del borde para que sea más sutil */
+      text-align: left;
+      padding: 8px;
+      font-size: 16px; /* Ajusta el tamaño de la fuente para mayor legibilidad */
+    }
+    
+    th {
+      background-color: rgb(97, 197, 255);
+      color: black;
+      position: sticky; /* Hace que la cabecera sea fija al hacer scroll */
+      top: 0;
+      z-index: 1;
+    }
+    
+    td {
+      background-color: rgb(194, 232, 254);
+    }
+    
+    
 .create {
   display: flex;
   flex-wrap: wrap; /* Para que los elementos se ajusten en varias filas si es necesario */
@@ -311,4 +324,12 @@ td{
 
 .create button:hover {
   background-color: #0056b3; /* Cambia el color al pasar el ratón */
+}
+.botonModal {
+  padding: 0; /* Eliminar padding adicional */
+  margin: 0; /* Eliminar margen adicional */
+  width: 25px; /* Ajusta el tamaño del botón según sea necesario */
+  height: 25px; /* Ajusta la altura para que sea más pequeña */
+  border: none; /* Elimina cualquier borde */
+  cursor: pointer; /* Cambia el cursor a pointer */
 }
