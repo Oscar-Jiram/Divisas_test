@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Select from "react-select";
 import { useState, useEffect } from "react";
+import ButtonIcon from './Pen';
 
 function EditModal({id}) {
   
@@ -200,7 +201,9 @@ const options = [
 
   return (
     <div>
-      <Button onClick={handleOpen}>Editar alarma</Button>
+      <Button className='botonModal' onClick={handleOpen}>
+      <ButtonIcon/>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

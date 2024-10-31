@@ -13,6 +13,7 @@ import { IoIosSwitch } from "react-icons/io";
 import Switch from "./Components/DarkMode.jsx";
 import BasicModal from './Components/Modal.jsx';
 import EventTable from './Components/EventTable.jsx';
+import ButtonIcon from './Components/Pen.jsx';
 
 
 
@@ -20,8 +21,9 @@ function App() {
   
   return (
     <div><br/>
-      <div className="contenedor">
       <Switch/>
+      <div className="contenedor">
+      
         <div className="menu">
         <BrowserRouter>
       <Navegation/>
@@ -34,7 +36,6 @@ function App() {
         <Route path="*" element ={<Error/>} />
         </Routes>
       </BrowserRouter>
-      
       <Notification/>
         </div>
       </div>
