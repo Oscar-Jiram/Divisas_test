@@ -54,6 +54,19 @@ button{
   user-select: none;
 
 }
+.iconoBasura{
+  margin: 1em;
+  font-size: 1em;
+  height: 2em;
+  width: 2em;
+  border-radius:10px;
+  background-color: #bde8fd;
+  color: white;
+  border: 0px solid white;
+  cursor: pointer;
+  user-select: none;
+
+}
 button:active{
   background-color: #1d4ed8;
   color:white ;

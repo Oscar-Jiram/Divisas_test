@@ -57,9 +57,9 @@ const EliminateModal = ({id}) => {
 
     return (
     <div>
-    <Button onClick={handleOpen}>
+    <button onClick={handleOpen} className='iconoBasura'>
       <TrashIcon/>
-    </Button>
+    </button>
       <Modal
         open={open}
         onClose={handleClose}

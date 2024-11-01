@@ -2,7 +2,7 @@
 .trash-icon {
     display: inline-block; /* Ajusta el tamaño del contenedor al del contenido */
     padding: 0; /* Elimina cualquier relleno adicional */
-    margin: 0; /* Elimina cualquier margen adicional */
+    margin: -14; /* Elimina cualquier margen adicional */
     width: auto; /* Ajusta el ancho automáticamente */
     height: auto; /* Ajusta el alto automáticamente */
     cursor: pointer;

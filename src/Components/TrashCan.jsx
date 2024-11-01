@@ -10,8 +10,8 @@ const TrashIcon = () => {
   const handleMouseLeave = () => setIsOpen(false);
 
   return (
-    <div
-      className="trash-icon"
+    <div 
+      className="trash-icon "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
