@@ -1,6 +1,6 @@
 /*!
  * @license
- * TradingView Lightweight Charts™ v4.2.0
+ * TradingView Lightweight Charts™ v4.2.1
  * Copyright (c) 2024 TradingView, Inc.
  * Licensed under Apache License 2.0 https://www.apache.org/licenses/LICENSE-2.0
  */
@@ -46,7 +46,7 @@
  */
 
 /**
- * @mui/styled-engine v6.1.5
+ * @mui/styled-engine v6.1.6
  *
  * @license MIT
  * This source code is licensed under the MIT license found in the
@@ -54,7 +54,7 @@
  */
 
 /**
- * @remix-run/router v1.19.1
+ * @remix-run/router v1.20.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -65,7 +65,7 @@
  */
 
 /**
- * React Router DOM v6.26.1
+ * React Router DOM v6.27.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -76,7 +76,7 @@
  */
 
 /**
- * React Router v6.26.1
+ * React Router v6.27.0
  *
  * Copyright (c) Remix Software Inc.
  *

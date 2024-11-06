@@ -21,7 +21,7 @@ const TrashIcon = () => {
         y="0px"
         width="50"
         height="100"
-        viewBox="0 -10 64 74" /* Modificar el viewBox */
+        viewBox="12 -10 64 74" /* Modificar el viewBox */
       >
         {/* Tapa del basurero */}
         <path

@@ -63,10 +63,12 @@ const calculateDateRange = (range) => {
         height: chartContainerRef.current.clientHeight,
         rightPriceScale: {
           visible: true,
+          autoScale: true,
         },
         timeScale: {
           timeVisible: true,
           secondsVisible: false,
+          autoScale: true,
         },
       });
       areaSeriesRef.current = chartRef.current.addAreaSeries({

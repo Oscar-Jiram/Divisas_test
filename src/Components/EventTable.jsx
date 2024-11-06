@@ -60,6 +60,8 @@ function EventTable() {
             <th>Valor mínimo</th>
             <th>Valor máximo</th>
             <th>Alerta activa</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody className="table-body">

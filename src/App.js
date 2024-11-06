@@ -23,7 +23,6 @@ function App() {
     <div><br/>
       <Switch/>
       <div className="contenedor">
-      
         <div className="menu">
         <BrowserRouter>
       <Navegation/>
@@ -36,7 +35,6 @@ function App() {
         <Route path="*" element ={<Error/>} />
         </Routes>
       </BrowserRouter>
-      <Notification/>
         </div>
       </div>
     </div>
