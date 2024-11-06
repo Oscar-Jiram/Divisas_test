@@ -22,32 +22,8 @@ function EventTable() {
     };
 
     fetchRates();
-  }, []);
+  }, [rates]);
 
-  const eliminateAlarm = async (id) => {
-    try {
-      const response = await fetch(
-        `https://proyectodivisasapi-production.up.railway.app/api/AlertasDivisas/Delete/${id}`,
-        {
-          method: "DELETE", // Usar el método DELETE
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Datos eliminados correctamente:", result);
-        // Actualizar la tabla después de eliminar la fila
-        setRates((prevRates) => prevRates.filter((rate) => rate.id !== id));
-      } else {
-        console.error("Error en la solicitud:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
-    }
-  };
 
   return (
     <div className="table-container">
