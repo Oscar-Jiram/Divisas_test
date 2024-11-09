@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Select from "react-select";
 import { useState, useEffect } from "react";
+import { IoClose } from 'react-icons/io5'; // Importa el icono de cierre
 
 function CreateModal() {
   const [open, setOpen] = useState(false);
@@ -79,6 +80,7 @@ const options = [
     border: '1px solid #000',
     boxShadow: 24,
     p: 4,
+    position: 'relative', // Asegúrate de que el modal tenga posición relativa
   };
 
   useEffect(() => {
@@ -167,6 +169,7 @@ const options = [
         console.error('Error en la solicitud:', error);
       }
     }
+    handleClose();
   };
 
   const handleMaxValue = (e) => {
@@ -192,7 +195,6 @@ const options = [
   const filteredOptionsForCurrency2 = options.filter(
     (option) => option.value !== (currency1 ? currency1.value : null)
   );
-
   return (
     <div>
       <Button onClick={handleOpen}>Crear alarma</Button>
@@ -202,60 +204,74 @@ const options = [
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
       >
-        <Box sx={style}>
+        <Box sx={{ position: 'relative', ...style }}>
+  <button
+    onClick={handleClose}
+    style={{
+      position: 'absolute',
+      top: '-2rem', // Usa rem para un mejor escalado
+      right: '-8rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      zIndex: 1, // Asegúrate de que esté por encima del contenido
+    }}
+          >
+            <IoClose style={{ fontSize: '24px', color: '#333' }} />
+          </button>
           <Typography id="modal-title" variant="h6" component="h2">
             Crear alarma
           </Typography>
           <div className='alarm-container'>
-          <Select
-          isSearchable={false}
-          value={currency1}
-          onChange={handleCurrency1Change}
-          options={filteredOptionsForCurrency1}
-          formatOptionLabel={({ label, image }) => (
-            <div style={{ display: "block", color: "black", alignItems: "center" }}>
-              <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
-              <span>{label}</span>
-            </div>
-          )}
-          className="selection3"
-        />
-        <Select
-          isSearchable={false}
-          value={currency2}
-          onChange={handleCurrency2Change}
-          options={filteredOptionsForCurrency2}
-          formatOptionLabel={({ label, image }) => (
-            <div style={{ display: "block", color: "black", alignItems: "center" }}>
-              <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
-              <span>{label}</span>
-            </div>
-          )}
-          className="selection3"
-        />
-        Max value
-        <input
-        value={value1}
-          placeholder="Insert max value"
-          onClick={deleteContent}
-          type="number"
-          onChange={handleMaxValue}
-          className="alarmInput"
-        /><br/>
-        Min value
-        <input
-        value={value2}
-          placeholder="Insert min value"
-          onClick={deleteContent}
-          type="number"
-          onChange={handleMinValue}
-          className="alarmInput"
-        />
-        <button
-          onClick={() => createAlarm(currency1, currency2, value1, value2)} 
-          className="buttonAlarm">
-          Crear alarma
-        </button>
+            <Select
+              isSearchable={false}
+              value={currency1}
+              onChange={handleCurrency1Change}
+              options={filteredOptionsForCurrency1}
+              formatOptionLabel={({ label, image }) => (
+                <div style={{ display: "block", color: "black", alignItems: "center" }}>
+                  <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
+                  <span>{label}</span>
+                </div>
+              )}
+              className="selection3"
+            />
+            <Select
+              isSearchable={false}
+              value={currency2}
+              onChange={handleCurrency2Change}
+              options={filteredOptionsForCurrency2}
+              formatOptionLabel={({ label, image }) => (
+                <div style={{ display: "block", color: "black", alignItems: "center" }}>
+                  <img src={image} alt={label} style={{ width: 30, height: 22, marginRight: 10 }} />
+                  <span>{label}</span>
+                </div>
+              )}
+              className="selection3"
+            />
+            Max value
+            <input
+              value={value1}
+              placeholder="Insert max value"
+              onClick={deleteContent}
+              type="number"
+              onChange={handleMaxValue}
+              className="alarmInput"
+            /><br />
+            Min value
+            <input
+              value={value2}
+              placeholder="Insert min value"
+              onClick={deleteContent}
+              type="number"
+              onChange={handleMinValue}
+              className="alarmInput"
+            />
+            <button
+              onClick={() => createAlarm(currency1, currency2, value1, value2)}
+              className="buttonAlarm">
+              Crear alarma
+            </button>
           </div>
         </Box>
       </Modal>
@@ -264,4 +280,3 @@ const options = [
 }
 
 export default CreateModal;
-

@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Select from "react-select";
 import { useState, useEffect } from "react";
 import ButtonIcon from './Pen';
+import { IoClose } from 'react-icons/io5'; // Importa el icono de cierre
+
 
 function EditModal({id}) {
   
@@ -172,6 +174,7 @@ const options = [
         console.error('Error en la solicitud:', error);
       }
     }
+    handleClose();
   };
   
 
@@ -211,6 +214,20 @@ const options = [
         aria-describedby="modal-description"
       >
         <Box sx={style}>
+        <button
+    onClick={handleClose}
+    style={{
+      position: 'absolute',
+      top: '-2rem', // Usa rem para un mejor escalado
+      right: '-8rem',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      zIndex: 1, // Asegúrate de que esté por encima del contenido
+    }}
+          >
+            <IoClose style={{ fontSize: '24px', color: '#333' }} />
+          </button>
           <Typography id="modal-title" variant="h6" component="h2">
             Editar alarma
           </Typography>
@@ -241,7 +258,7 @@ const options = [
           )}
           className="selection3"
         />
-        Max value
+        Valor máximo
         <input
         value={value1}
           placeholder="Insert max value"
@@ -250,7 +267,7 @@ const options = [
           onChange={handleMaxValue}
           className="alarmInput"
         /><br/>
-        Min value
+        Valoor minimo
         <input
         value={value2}
           placeholder="Insert min value"
