@@ -52,11 +52,23 @@ const calculateDateRange = (range) => {
   return { startDate, endDate };
 };
 
+const handleResize = () => {
+  if (chartRef.current) {
+    chartRef.current.applyOptions({
+       width: chartContainerRef.current.clientWidth
+      });
+      chartRef.current.timeScale().applyOptions({
+        width: chartContainerRef.current.clientWidth,
+        barSpacing:80 // este valor le da la separacion inical entre cada punto graficado
+       });
+  }
+};
 
 
   // useEffect para inicializar el gráfico
   useEffect(() => {
     if (chartContainerRef.current) {
+     
       chartRef.current = createChart(chartContainerRef.current, {
         layout: { textColor: 'black', background: { type: 'solid', color: 'white' } },
         width: chartContainerRef.current.clientWidth,
@@ -74,8 +86,9 @@ const calculateDateRange = (range) => {
         topColor: "#2962FF",
         bottomColor: "rgba(41, 98, 255, 0.28)",
       });
+      handleResize();
     }
-
+   
     return () => {
       if (chartRef.current) {
         chartRef.current.remove();
@@ -83,6 +96,7 @@ const calculateDateRange = (range) => {
       }
     };
   }, []);
+  
 
   
   useEffect(() => {
@@ -210,6 +224,8 @@ const calculateDateRange = (range) => {
   const filteredOptionsForCurrency1 = options.filter(
   (option) => option.value !== (currency2 ? currency2.value : null)
 );
+
+
 
 const filteredOptionsForCurrency2 = options.filter(
   (option) => option.value !== (currency1 ? currency1.value : null)

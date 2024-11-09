@@ -346,3 +346,9 @@ input[type="number"]::-webkit-outer-spin-button {
   border: none; /* Elimina cualquier borde */
   cursor: pointer; /* Cambia el cursor a pointer */
 }
+
+
+a#tv-attr-logo {
+  --fill: none !important;
+  --stroke:none  imo !important;
+}
